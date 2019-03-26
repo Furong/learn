@@ -3,6 +3,30 @@
 ### ThreadPoolExecutor使用
 
 ```java
+public class TaskVo {
+        int taskId;
+
+        public TaskVo(int taskId) {
+            this.taskId = taskId;
+        }
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    @Override
+        public String toString() {
+            return "TaskVo{" +
+                    "taskId=" + taskId +
+                    '}';
+        }
+}
+
+
 public class Task implements Runnable
 {  
     private String name;  
@@ -41,22 +65,27 @@ public class ThreadPool {
             String name = "Register-thread-" + NUM.getAndIncrement();
             System.out.println(name);
             Thread t = new Thread(r, name);
-            t.setDaemon(true);
             return t;
         }
     });
 
     public static void main(String[] args){
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         for(int i =1; i < 10 ; i++){
             Task task = new Task("task"+ i);
             System.out.println("add task " + i);
+            TaskVo taskVo = new TaskVo(i);
             EXECUTOR.submit(task);
-            //executor.submit(task);
+            EXECUTOR.submit(new Runnable() {
+                @Override
+                public void run() {
+                   System.out.println(taskVo.toString());
+                }
+            });
         }
+        EXECUTOR.shutdown();
     }
-
 }
+
 
 ```
 
