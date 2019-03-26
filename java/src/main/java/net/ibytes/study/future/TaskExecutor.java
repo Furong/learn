@@ -85,4 +85,12 @@ public class TaskExecutor {
         }
         return false;
     }
+
+    /**
+     * 关闭线程池
+     */
+    public void shutdown(){
+        executorService.shutdown();
+    }
+
 }

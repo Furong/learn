@@ -11,7 +11,7 @@ public class FutureMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         TaskExecutor executor = TaskExecutor.getInstance();
         List<Future<Integer>> futures = new ArrayList<>(100);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 40; i++) {
             futures.add(executor.asyncRunTask(i + ""));
         }
         // to cancel task
@@ -24,7 +24,7 @@ public class FutureMain {
             }
         }).start();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 40; i++) {
             if (futures.get(i).isCancelled()) {
                 System.out.println("task " + i + " has been cancelled");
             } else {
@@ -36,5 +36,7 @@ public class FutureMain {
             }
             executor.remove(i + "");
         }
+
+        executor.shutdown();
     }
 }
