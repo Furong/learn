@@ -78,11 +78,19 @@ public class TaskExecutor {
         return false;
     }
 
-    //判断任务是否存在
+    /**
+     * 判断任务是否存在
+     * @param taskId
+     * @return
+     */
     public boolean isExistTask(String taskId) {
         if (taskMap.containsKey(taskId)) {
             return true;
         }
         return false;
+    }
+
+    public void shutdown(){
+        executorService.shutdown();
     }
 }

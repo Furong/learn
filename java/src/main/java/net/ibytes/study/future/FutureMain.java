@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeoutException;
 
 public class FutureMain {
 
@@ -36,5 +37,6 @@ public class FutureMain {
             }
             executor.remove(i + "");
         }
+        executor.shutdown();
     }
 }
