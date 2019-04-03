@@ -37,10 +37,7 @@ public class FutureMain {
             }
             executor.remove(i + "");
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2fe83254a894296bc96923fd661b1980996b6e88
         executor.shutdown();
     }
 }
