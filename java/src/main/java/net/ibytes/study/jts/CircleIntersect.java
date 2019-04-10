@@ -8,7 +8,7 @@ package net.ibytes.study.jts;
 public class CircleIntersect {
 
     public static void main(String[] args){
-        Circle
+
 
     }
 
