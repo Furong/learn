@@ -49,6 +49,21 @@
             <version>14.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.geotools/gt-epsg-hsql -->
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-epsg-hsql</artifactId>
+            <version>20.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.geotools/gt-epsg-extension -->
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-epsg-extension</artifactId>
+            <version>20.2</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
