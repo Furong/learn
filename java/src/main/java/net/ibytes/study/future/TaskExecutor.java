@@ -90,7 +90,7 @@ public class TaskExecutor {
         return false;
     }
 
-<<<<<<< HEAD
+
     /**
      * 关闭线程池
      */
@@ -98,9 +98,4 @@ public class TaskExecutor {
         executorService.shutdown();
     }
 
-=======
-    public void shutdown(){
-        executorService.shutdown();
-    }
->>>>>>> 2fe83254a894296bc96923fd661b1980996b6e88
 }
