@@ -12,8 +12,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class SocketHttp {
 
-
-
     public static void main(String[] args) {
         String host = "www.ibytes.net";
         int port = 80;
