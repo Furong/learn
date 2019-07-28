@@ -1,8 +1,5 @@
 package net.ibytes.study.http;
 
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
@@ -30,11 +27,11 @@ public class HttpClientPoolUtil {
     /**
      *  发送请求的客户端单例
      */
-    private static CloseableHttpClient httpClient;
+   // private static CloseableHttpClient httpClient;
     /**
      * 连接池管理类
      */
-    private static PoolingHttpClientConnectionManager manager;
+   // private static PoolingHttpClientConnectionManager manager;
 
 
     private static ScheduledExecutorService monitorExecutor;
@@ -43,6 +40,8 @@ public class HttpClientPoolUtil {
      *  相当于线程锁,用于线程安全
      */
     private final static Object syncLock = new Object();
+    
+
 
 
 }
