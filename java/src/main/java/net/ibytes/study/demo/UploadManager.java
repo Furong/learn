@@ -18,14 +18,17 @@ public class UploadManager {
 
     private Queue<UploadTask> queue = new LinkedBlockingQueue<>();
 
-    private String ip = "127.0.0.1";
-    private String port = "8080";
+    private  String ip = "127.0.0.1";
+    private  String port = "8080";
 
-    public UploadManager() {
+    private UploadRunner[] runners;
+
+    public UploadManager(String ip,String port) {
         this.executorService = Executors.newFixedThreadPool(10);
-
+        runners = new UploadRunner[10];
         for (int i = 0; i < 10; i++) {
-            executorService.execute(new UploadRunner(this.ip, this.port, queue));
+            runners[i] = new UploadRunner(ip, port, queue);
+            executorService.execute(runners[i]);
         }
     }
 
@@ -37,9 +40,23 @@ public class UploadManager {
         return future;
     }
 
+    public void update(String ip,String port) {
+        this.ip = ip;
+        this.port = port;
+        for (int i = 0; i < 10; i++) {
+            runners[i].stop();
+        }
+        for (int i = 0; i < 10; i++) {
+            runners[i] = new UploadRunner(ip, port, queue);
+            executorService.execute(runners[i]);
+        }
+    }
+
 
     public static void main(String[] args) throws IOException {
-        UploadManager demoServer = new UploadManager();
+        String ip ="";
+        String port = "";
+        UploadManager demoServer = new UploadManager(ip,port);
         List<MessageBO> list = generate();
 
         for (MessageBO messageBO : list) {
